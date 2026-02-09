@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using HelloWorldApiv2.BLL;
+using HelloWorldApiv2.DTO;
 
 namespace HelloWorldApiv2.Controllers
 {
@@ -6,25 +8,17 @@ namespace HelloWorldApiv2.Controllers
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
-        public new class User
+        private readonly IUserService _userService;
+
+        public UsersController(IUserService userService)
         {
-            public required int Id { get; set; }
-            public required string Name { get; set; }
-            public required string Phone { get; set; }
-            public required string Country { get; set; }
+            _userService = userService;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<User>> GetUsers()
+        public ActionResult<IEnumerable<UserDto>> GetUsers()
         {
-            var users = new List<User>
-            {
-                new User { Id = 1, Name = "Juan Pérez", Phone = "555-1234", Country = "México" },
-                new User { Id = 2, Name = "María López", Phone = "555-5678", Country = "Colombia" },
-                new User { Id = 3, Name = "Carlos Sánchez", Phone = "555-9012", Country = "España" },
-                new User { Id = 4, Name = "Ana Torres", Phone = "555-3456", Country = "Argentina" }
-            };
-
+            var users = _userService.GetUsers();
             return Ok(users);
         }
     }
