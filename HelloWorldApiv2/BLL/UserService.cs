@@ -1,4 +1,5 @@
-﻿using HelloWorldApiv2.DAL;
+﻿using HelloWorldApiv2.BLL.Interface;
+using HelloWorldApiv2.DAL.Interface;
 using HelloWorldApiv2.DTO;
 
 namespace HelloWorldApiv2.BLL

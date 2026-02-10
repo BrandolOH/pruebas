@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using HelloWorldApiv2.BLL;
 using HelloWorldApiv2.DTO;
+using HelloWorldApiv2.BLL.Interface;
 
 namespace HelloWorldApiv2.Controllers
 {

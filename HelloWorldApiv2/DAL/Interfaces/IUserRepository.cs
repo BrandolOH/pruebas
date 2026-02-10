@@ -1,6 +1,6 @@
 ﻿using HelloWorldApiv2.DTO;
 
-namespace HelloWorldApiv2.DAL
+namespace HelloWorldApiv2.DAL.Interface
 {
     public interface IUserRepository
     {

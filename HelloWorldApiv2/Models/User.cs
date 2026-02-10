@@ -1,10 +1,13 @@
-﻿namespace HelloWorldApiv2.DTO
+﻿namespace HelloWorldApiv2.Models
 {
-    public class UserDto : IUserDto
+    public class User
     {
-        public required int Id { get; set; }
+        public int Id { get; set; }
+
         public required string Name { get; set; }
+
         public required string Phone { get; set; }
+
         public required string Country { get; set; }
     }
 }
