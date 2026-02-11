@@ -4,18 +4,11 @@ using HelloWorldApiv2.DTO;
 
 namespace HelloWorldApiv2.BLL
 {
-    public class UserService : IUserService
+    public class UserService(IUserRepository userRepository) : IUserService
     {
-        private readonly IUserRepository _userRepository;
-
-        public UserService(IUserRepository userRepository)
+        public IEnumerable<IUserDto> GetUsers()
         {
-            _userRepository = userRepository;
-        }
-
-        public IEnumerable<UserDto> GetUsers()
-        {
-            return _userRepository.GetUsers();
+            return userRepository.GetUsers();
         }
     }
 }

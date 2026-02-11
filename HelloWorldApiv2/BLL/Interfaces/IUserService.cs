@@ -4,6 +4,6 @@ namespace HelloWorldApiv2.BLL.Interface
 {
     public interface IUserService
     {
-        IEnumerable<UserDto> GetUsers();
+        IEnumerable<IUserDto> GetUsers();
     }
 }
