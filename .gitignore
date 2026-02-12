@@ -13,3 +13,6 @@ obj/
 
 # Otros
 node_modules/
+
+# Env files
+.env
