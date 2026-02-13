@@ -1,23 +1,17 @@
 ﻿using HelloWorldApiv2.DAL.Interface;
-using HelloWorldApiv2.DTO;
 using HelloWorldApiv2.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace HelloWorldApiv2.DAL
 {
-    public class UserRepository(AppDbContext context) : IUserRepository
+    public class UserRepository(IDbContextFactory<AppDbContext> factory) : IUserRepository
     {
-        public IEnumerable<UserDto> GetUsers()
+        public IQueryable<User> GetUsers()
         {
-            return context.Users
-                .Select(user => new UserDto
-                {
-                    Id = user.Id,
-                    Name = user.Name,
-                    Phone = user.Phone,
-                    Country = user.Country
-                })
-                .ToList();
+            var context = factory.CreateDbContext();
+
+            return context.Users.AsNoTracking();
         }
     }
 }

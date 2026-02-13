@@ -1,9 +1,9 @@
-﻿using HelloWorldApiv2.DTO;
+﻿using HelloWorldApiv2.Models;
 
 namespace HelloWorldApiv2.DAL.Interface
 {
     public interface IUserRepository
     {
-        IEnumerable<UserDto> GetUsers();
+        IQueryable<User> GetUsers();
     }
 }
