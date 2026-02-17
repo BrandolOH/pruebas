@@ -1,8 +1,10 @@
 using DotNetEnv;
 using HelloWorldApiv2.BLL;
 using HelloWorldApiv2.BLL.Interface;
+using HelloWorldApiv2.BLL.Interfaces;
 using HelloWorldApiv2.DAL;
 using HelloWorldApiv2.DAL.Interface;
+using HelloWorldApiv2.DAL.Interfaces;
 using HelloWorldApiv2.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,6 +36,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 
 var app = builder.Build();
 

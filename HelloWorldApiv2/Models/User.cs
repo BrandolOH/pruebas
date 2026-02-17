@@ -9,5 +9,7 @@
         public required string Phone { get; set; }
 
         public required string Country { get; set; }
+
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }
