@@ -6,14 +6,9 @@ using HelloWorldApiv2.Models;
 
 namespace HelloWorldApiv2.BLL
 {
-    public class OrderService : IOrderService
+    public class OrderService(IOrderRepository orderRepository) : IOrderService
     {
-        private readonly IOrderRepository orderRepository;
-
-        public OrderService(IOrderRepository orderRepository)
-        {
-            this.orderRepository = orderRepository;
-        }
+        private readonly IOrderRepository orderRepository = orderRepository;
 
         public IEnumerable<IOrderWithUserNameDto> GetOrdersWithUserName()
         {

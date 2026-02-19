@@ -6,9 +6,11 @@ namespace HelloWorldApiv2.BLL
 {
     public class UserService(IUserRepository userRepository) : IUserService
     {
+        private readonly IUserRepository _userRepository =userRepository;
+
         public IEnumerable<UserDto> GetUsers()
         {
-            return userRepository.GetUsers()
+            return _userRepository.GetUsers()
                 .Select(user => new UserDto
                 {
                     Id = user.Id,

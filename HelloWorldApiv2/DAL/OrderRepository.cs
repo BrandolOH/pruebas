@@ -4,14 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HelloWorldApiv2.DAL
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository(IDbContextFactory<AppDbContext> contextFactory) : IOrderRepository
     {
-        private readonly IDbContextFactory<AppDbContext> contextFactory;
-
-        public OrderRepository(IDbContextFactory<AppDbContext> contextFactory)
-        {
-            this.contextFactory = contextFactory;
-        }
+        private readonly IDbContextFactory<AppDbContext> contextFactory = contextFactory;
 
         public IQueryable<Order> GetOrders()
         {
