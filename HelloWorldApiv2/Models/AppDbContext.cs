@@ -11,9 +11,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Order>()
-            .HasOne(o => o.User)
-            .WithMany(u => u.Orders)
-            .HasForeignKey(o => o.UserId)
+            .HasOne(order => order.User)
+            .WithMany(user => user.Orders)
+            .HasForeignKey(order => order.UserId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -1,9 +1,9 @@
-﻿using HelloWorldApiv2.DTO.Interfaces;
+﻿using HelloWorldApiv2.Models;
 
 namespace HelloWorldApiv2.DAL.Interfaces
 {
     public interface IOrderRepository
     {
-        IQueryable<IOrderWithUserNameDto> GetOrdersWithUserName();
+        IQueryable<Order> GetOrders();
     }
 }
