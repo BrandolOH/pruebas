@@ -5,8 +5,11 @@ using HelloWorldApiv2.BLL.Interfaces;
 using HelloWorldApiv2.DAL;
 using HelloWorldApiv2.DAL.Interface;
 using HelloWorldApiv2.DAL.Interfaces;
+using HelloWorldApiv2.DTO;
 using HelloWorldApiv2.Models;
+using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OData.ModelBuilder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +33,20 @@ builder.Services.AddDbContextFactory<AppDbContext>(options =>
 
 
 // Add services
-builder.Services.AddControllers();
+var modelBuilder = new ODataConventionModelBuilder();
+modelBuilder.EntitySet<OrderWithUserNameDto>("Orders");
+
+builder.Services.AddControllers()
+    .AddOData(options =>
+        options.Select()
+               .Filter()
+               .OrderBy()
+               .Expand()
+               .Count()
+               .SetMaxTop(100)
+               .AddRouteComponents("odata", modelBuilder.GetEdmModel())
+    );
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

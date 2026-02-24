@@ -1,9 +1,9 @@
-﻿using HelloWorldApiv2.DTO.Interfaces;
+﻿using HelloWorldApiv2.DTO;
 
 namespace HelloWorldApiv2.BLL.Interfaces
 {
     public interface IOrderService
     {
-        IEnumerable<IOrderWithUserNameDto> GetOrdersWithUserName();
+        IQueryable<OrderWithUserNameDto> GetOrdersWithUserName();
     }
 }

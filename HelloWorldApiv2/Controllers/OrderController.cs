@@ -1,7 +1,8 @@
 ﻿using HelloWorldApiv2.BLL.Interface;
 using HelloWorldApiv2.BLL.Interfaces;
-using HelloWorldApiv2.DTO.Interfaces;
+using HelloWorldApiv2.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 
 namespace HelloWorldApiv2.Controllers
 {
@@ -16,12 +17,12 @@ namespace HelloWorldApiv2.Controllers
             this.orderService = orderService;
         }
 
-        // GET api/orders
+     
         [HttpGet]
-        public ActionResult<IEnumerable<IOrderWithUserNameDto>> GetOrders()
+        [EnableQuery]
+        public IQueryable<OrderWithUserNameDto> GetOrders()
         {
-            var orders = orderService.GetOrdersWithUserName();
-            return Ok(orders);
+            return orderService.GetOrdersWithUserName();
         }
 
     }
