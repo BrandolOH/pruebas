@@ -6,18 +6,16 @@ namespace HelloWorldApiv2.DAL
 {
     public class OrderRepository : IOrderRepository
     {
-        private readonly IDbContextFactory<AppDbContext> _contextFactory;
+        private readonly AppDbContext _context;
 
-        public OrderRepository(IDbContextFactory<AppDbContext> contextFactory)
+        public OrderRepository(AppDbContext context)
         {
-            _contextFactory = contextFactory;
+            _context = context;
         }
 
         public IQueryable<Order> GetOrders()
         {
-            var context = _contextFactory.CreateDbContext();
-
-            return context.Orders
+            return _context.Orders
                 .AsNoTracking()
                 .Include(order => order.User);
         }

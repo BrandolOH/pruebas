@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HelloWorldApiv2.BLL.Interface;
 using HelloWorldApiv2.DTO;
-using HelloWorldApiv2.BLL.Interface;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HelloWorldApiv2.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/users")]
     public class UsersController : ControllerBase

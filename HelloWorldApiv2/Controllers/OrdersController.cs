@@ -1,10 +1,12 @@
 ﻿using HelloWorldApiv2.BLL.Interfaces;
 using HelloWorldApiv2.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 
 namespace HelloWorldApiv2.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/orders")]
     public class OrdersController(IOrderService orderService) : ControllerBase

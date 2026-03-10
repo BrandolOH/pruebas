@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HelloWorldApiv2.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class HelloController : ControllerBase

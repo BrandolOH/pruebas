@@ -2,16 +2,20 @@
 using HelloWorldApiv2.Models;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace HelloWorldApiv2.DAL
 {
-    public class UserRepository(IDbContextFactory<AppDbContext> factory) : IUserRepository
+    public class UserRepository : IUserRepository
     {
+        private readonly AppDbContext _context;
+
+        public UserRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
         public IQueryable<User> GetUsers()
         {
-            var context = factory.CreateDbContext();
-
-            return context.Users.AsNoTracking();
+            return _context.Users.AsNoTracking();
         }
     }
 }
