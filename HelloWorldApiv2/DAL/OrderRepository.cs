@@ -4,13 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HelloWorldApiv2.DAL
 {
-    public class OrderRepository(IDbContextFactory<AppDbContext> contextFactory) : IOrderRepository
+    public class OrderRepository : IOrderRepository
     {
-        private readonly IDbContextFactory<AppDbContext> contextFactory = contextFactory;
+        private readonly IDbContextFactory<AppDbContext> _contextFactory;
+
+        public OrderRepository(IDbContextFactory<AppDbContext> contextFactory)
+        {
+            _contextFactory = contextFactory;
+        }
 
         public IQueryable<Order> GetOrders()
         {
-            var context = contextFactory.CreateDbContext();
+            var context = _contextFactory.CreateDbContext();
 
             return context.Orders
                 .AsNoTracking()
