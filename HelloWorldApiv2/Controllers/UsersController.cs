@@ -1,4 +1,4 @@
-﻿using HelloWorldApiv2.BLL.Interface;
+﻿using HelloWorldApiv2.BLL.Interfaces;
 using HelloWorldApiv2.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

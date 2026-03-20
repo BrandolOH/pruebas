@@ -1,6 +1,5 @@
 using DotNetEnv;
 using HelloWorldApiv2.BLL;
-using HelloWorldApiv2.BLL.Interface;
 using HelloWorldApiv2.BLL.Interfaces;
 using HelloWorldApiv2.DAL;
 using HelloWorldApiv2.DAL.Interface;
@@ -133,12 +132,12 @@ builder.Services.AddSwaggerGen(options =>
 
 // ================= DEPENDENCY INJECTION =================
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
-
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 // ================= BUILD APP =================
 

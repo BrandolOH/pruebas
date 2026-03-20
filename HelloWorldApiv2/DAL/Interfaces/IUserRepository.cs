@@ -4,6 +4,6 @@ namespace HelloWorldApiv2.DAL.Interface
 {
     public interface IUserRepository
     {
-        IQueryable<User> GetUsers();
+        IQueryable<ApplicationUser> GetUsers();
     }
 }

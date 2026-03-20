@@ -1,16 +1,22 @@
-﻿using HelloWorldApiv2.BLL.Interface;
-using HelloWorldApiv2.DAL.Interface;
+﻿using HelloWorldApiv2.BLL.Interfaces;
 using HelloWorldApiv2.DTO;
+using HelloWorldApiv2.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace HelloWorldApiv2.BLL
 {
-    public class UserService(IUserRepository userRepository) : IUserService
+    public class UserService : IUserService
     {
-        private readonly IUserRepository _userRepository =userRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public UserService(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
 
         public IEnumerable<UserDto> GetUsers()
         {
-            return _userRepository.GetUsers()
+            return _userManager.Users
                 .Select(user => new UserDto
                 {
                     Id = user.Id,

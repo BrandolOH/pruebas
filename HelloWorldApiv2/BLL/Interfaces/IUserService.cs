@@ -1,6 +1,6 @@
 ﻿using HelloWorldApiv2.DTO;
 
-namespace HelloWorldApiv2.BLL.Interface
+namespace HelloWorldApiv2.BLL.Interfaces
 {
     public interface IUserService
     {

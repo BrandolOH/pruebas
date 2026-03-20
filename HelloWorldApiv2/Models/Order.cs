@@ -12,8 +12,8 @@ namespace HelloWorldApiv2.Models
 
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
 
-        public int UserId { get; set; }
-        public User User { get; set; } = null!;
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; } = null!;
     }
 
 }

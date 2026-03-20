@@ -1,15 +1,13 @@
-﻿namespace HelloWorldApiv2.Models
-{
-    public class User
+﻿    using Microsoft.AspNetCore.Identity;
+
+    namespace HelloWorldApiv2.Models
     {
-        public int Id { get; set; }
+        public class ApplicationUser : IdentityUser
+        {
+            public string Name { get; set; }
+            public string Phone { get; set; }
+            public string Country { get; set; }
 
-        public required string Name { get; set; }
-
-        public required string Phone { get; set; }
-
-        public required string Country { get; set; }
-
-        public ICollection<Order> Orders { get; set; } = new List<Order>();
+            public ICollection<Order> Orders { get; set; } = new List<Order>();
+        }
     }
-}

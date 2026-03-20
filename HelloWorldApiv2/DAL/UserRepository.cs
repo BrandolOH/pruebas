@@ -13,7 +13,7 @@ namespace HelloWorldApiv2.DAL
             _context = context;
         }
 
-        public IQueryable<User> GetUsers()
+        public IQueryable<ApplicationUser> GetUsers()
         {
             return _context.Users.AsNoTracking();
         }
